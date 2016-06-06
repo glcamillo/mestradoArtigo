@@ -328,6 +328,8 @@ A privacidade é um conceito amplamente divulgado mas que não possui uma defini
 
 Uma linha importante que estende sistemas de controle de acesso para prover privacidade é a inclusão do atributo purpose que representa a finalidade para determinado acesso (ou para qual fim uma informação é usada) e que deve ser determinado pelo sistema antes da respectiva requisição. O texto de \cite{byun2005purpose} apresenta um modelo de controle de acesso baseado numa extensão do RBAC que incorpora atributos com propósito nos papeis e papeis condicionais.
 
+The principal norm of privacy aim to balance of data usage and the protection of personal data.
+
 \cite{kuschewsky2014new}
 Legal context
 In 1980, the OECD adopted a set of eight basic privacy principles. Today, these principles are reflected in all relevant general data protection frameworks worldwide, including the EU’s Data Protection Directive 95/46/EC, the EU-US Safe Harbour framework and the APEC Privacy Framework. The OECD’s Guidelines governing the protection of privacy and transborder flows of
@@ -339,14 +341,45 @@ national level. However, in contrast to the Convention for the Protection of Ind
 \section{Proposed}
 A proposta a ser desenvolvida no decorrer do período da pesquisa será apresentada a seguir considerando os principais aspectos que deverão ser modelados nas especificações e sistemas em uso. Antes da exposição, serão apresentadas as restrições que escopos que nortearão a construção da proposta, alguns dos quais já informados nos objetivos.
 
-\section{Escopo da proposta}
+\section{Proposed scope}
 
+When modelling a privacy-enhancing technologies (PET) technical measure we needs define the scope and the aims of the work. Considering the OECD guidelines \citep{oecd2013guidelinesupdated}, the model deals with the principle of Collection Limitation in that the user can use the service provider without presenting the value of his attribute relating to personal data. The main idea is protect the personal information in the state of data at rest \citep{liu2010data}, not treating with the attribute that the user release to service provider, in instance, data in motion, that requires different technical solution. 
+
+oss Modes
+Enterprise data generally exists in 
+the following three major stat
+
+The principal goal of the model presented in this paper is that which aim
+at preserving the privacy of individuals or groups of individuals. Numerous PETs have been
 A proposta deste projeto considera alguns pontos que são pressupostos ou que não fazem parte do modelo, mas podem interagir quanto a aspectos de segurança. Os principais pontos a serem considerados na proposta:
 \begin{enumerate}
 	\item Considerando a taxonomia apresentada por Heurix em \cite{heurix2015taxonomy}, os alvos de tecnologias of Privacy-Enhancing Technologies (PET) são a identidade, conteúdo e comportamento. No presente trabalho somente o aspecto da identidade será considerado para fins de manutenção da privacidade do usuário.
 	\item Durante a liberação de política do provedor de serviço para o provedor de identidade, podem surgir questões de privacidade. Para contornar essa questão, a proposta prevê que somente a política restrita à avaliação dos atributos do usuário sejam enviados para o IdP.
 	\item Extensões ao protocolo OAuth 2.0 e à especificação XACML deverão ser incluídas para comportar a proposta do modelo.
 \end{enumerate}
+
+While privacy usually refers to protecting the identity of the persons involved, Content refers to the data processed or created during the service consumption, including both payload as well as meta data. \citep{heurix2015taxonomy}
+Considering of aspect of privacy preserving, the model deals with the principle of Collection Limitation \citep{oecd2013guidelinesupdated} and treats of data-at-rest \citep{liu2010data}
+
+Unlinkability indicates that an entity cannot be related to
+another entity where the entities need not necessarily be of
+the same class (e.g., person and corresponding medical data).
+The Aspect (Fig. 3) dimension covers the general target of the
+PET (cf. (Fischer-Hübner, 2001)) and distinguishes between
+
+Scenario The Scenario dimension defines the primary
+untrusted actor and potential attacker in a privacy-
+sensitive information exchange operation.
+
+The Untrusted Server scenario describes the case of a service
+provider that aims to gain more information about the service
+consumers than necessary. This usually relates to the identity
+of the service consumers, leading to techniques such as
+anonymous communication which can be realized by relying
+on intermediate proxies between a sender and a receiver
+responsible for masking the sender's identity (cf. (Chaum,
+1981)). The main issue with anonymous communication is
+
 
 \section{Definição da proposta}
 
@@ -393,339 +426,22 @@ Em termos de desempenho, não há um trabalho relacionado que possa servir de pa
 
 
 
-\section{Numerical example}
+\section{Validation of model}
 
-%First, let us verify the recursive feasibility of
-%\cite{park2004crl}. Investigate an extreme case for RHC in
-%\cite{park2004crl} with $N=3$, i.e. the case with $\theta(k)=1$,
-%$\delta=1$ and no measurement errors. For $x(k)=[1,1]^T$ and $k=1$,
-%RHC in \cite{park2004crl} optimizes the control inputs
-%$u(k),u(k+1),u(k+2)$ to steer $x(k)$ to a terminal invariant set.
-%The states $x(k|k),x(k+1|k),x(k+2|k),x(k+3|k)$ are shown in Figure
+
 
 \section{Conclusions}
 
-This paper presents a new approach to RMPC for LPV systems with
-bounded rates of parameter variations and bounded parameter
-measurement errors. By adopting a sequence of feedback control laws
-corresponding to the parameter variation of LPV systems, the
-information on system parameters can be made use of, which is
-helpful to reduce the design conservativeness and then improve the
-control performance of RMPC. The recursive feasibility and
-closed-loop stability of the proposed MPC can be guaranteed by the
-proposed RMPC.
-\cite{sinnema2014xacmlrest}
-And 
-\citep{sinnema2014xacmlrest}
+
+This paper presents a new approach to realize fine-grained access control in environment with a identity provider OpenID Connect supplying PII data. The user controls the releasing the personal information. By adopting the evaluation of the service policies in the same domain of the identity provider, the personal data do not needs to be transported to the service provider. As a result of this, the privacy of PII is obtained and the user do not need care of the potential use of personal data by service providers. Important characteristic of this schema is the usability, because the user not need to established privacy policies concerning of manipulating his data.
+Future works go in direction of research the monitoring and auditing of privacy protection provided by the IdP and on the other side there is the question of decomposition of policy and include this in the model presents in this paper.
 
 
 \section*{Acknowledgements}
-Os autores queriam (would like) to acknowledge the support from the LRG-UFSC.
+The authors would like to acknowledge the support from the LRG-UFSC.
 
-%\bibliography{ijmso}
-%\bibliographystyle{unsrt}
-%\bibliographystyle{alpha}
-%\bibliographystyle{agsm}
-%\bibliographystyle{unsrtnat}
-%\bibliographystyle{amsalpha}
 \bibliographystyle{apsr}
-
 \bibliography{bibliografia}
 
-%\bibliographystyle{unsrt}        % Include this if you use bibtex
-%\bibliography{bibliografia}           % and a bib file to produce the
-                                 % bibliography (preferred). The
-                                 % correct style is generated by
-                                 % Elsevier at the time of printing.
-
-%\begin{thebibliography}{99}     % Otherwise use the
-%                                  thebibliography environment.
-%                                  Insert the full references here.
-%                                  See a recent issue of Automatica
-%                                  for the style.
-                                 
-%\bibitem[\protect\citeauthoryear{Ardagna {\em et al.}}{2008}]{ardagna2008privacy}
-%Claudio Agostino Ardagna, Marco Cremonini, S~De~Capitani~di Vimercati, and
-%Pierangela Samarati (2008) `A privacy-aware access control system` {\em Journal of Computer Security}, 16(4):369--397, 2008.
-%	
-%\bibitem[\protect\citeauthoryear{Ardagna {\em et al.}}{2010a}]{ardagna2010exploiting}
-%Claudio~A Ardagna, Jan Camenisch, Markulf Kohlweiss, Ronald Leenes, Gregory Neven, Bart Priem, Pierangela Samarati, Dieter Sommer, and Mario Verdicchio (2010a)
-%\newblock Exploiting cryptography for privacy-enhanced access control: A result of the prime project.
-%\newblock {\em Journal of Computer Security}, 18(1):123--160, 2010.                                 
-%
-%\bibitem[\protect\citeauthoryear{Ardagna {\em et al.}}{2010b}]{ardagna2010enabling}
-%Claudio Ardagna, Sabrina De~Capitani~di Vimercati, Gregory Neven, Stefano Paraboschi, Franz-Stefan Preiss, Pierangela Samarati, Mario Verdicchio (2010b)
-%\newblock Enabling privacy-preserving credential-based access control with XACML and SALML
-%\newblock In {\em Computer and Information Technology (CIT), 2010 IEEE 10th	International Conference on}, pages 1090--1095. IEEE, 2010.
-%
-%\bibitem[\protect\citeauthoryear{Chadwick {\em et al.}}{2008}]{chadwick2008permis}
-%David Chadwick, Gansen Zhao, Sassa Otenko, Romain Laborde, Linying Su, and Tuan Anh Nguyen (2008)
-%\newblock Permis: a modular authorization infrastructure.
-%\newblock {\em Concurrency and Computation: Practice and Experience}, 20(11):1341--1357, 2008.
-	
-%\bibitem[\protect\citeauthoryear{Chadwick and Fatema}{2012}]{chadwick2012privacy}
-%David~W Chadwick and Kaniz Fatema (2012)
-%\newblock A privacy preserving authorisation system for the cloud.
-%\newblock {\em Journal of Computer and System Sciences}, 78(5):1359--1373, 2012.	
-%	
-%\bibitem[\protect\citeauthoryear{G{\"u}rses {\em et al}}{2011}]{gurses2011engineering}
-%Seda G{\"u}rses, Carmela Troncoso, and Claudia Diaz.
-%\newblock Engineering privacy by design.
-%\newblock {\em Computers, Privacy \& Data Protection}, 14, 2011.
-%
-%\bibitem[\protect\citeauthoryear{Heurix {\em et al.}}{2015}]{heurix2015taxonomy}
-%Johannes Heurix, Peter Zimmermann, Thomas Neubauer, and Stefan Fenz.
-%\newblock A taxonomy for privacy enhancing technologies.
-%\newblock {\em Computers \& Security}, 2015.
-%	
-%\bibitem[\protect\citeauthoryear{Kolter {\em et al.}}{2007}]{kolter2007privacy}
-%Jan Kolter, Rolf Schillinger, and G{\"u}nther Pernul.
-%\newblock A privacy-enhanced attribute-based access control system.
-%\newblock In {\em Data and Applications Security XXI}, pages 129--143.Springer, 2007.
-%
-%	\bibitem[\protect\citeauthoryear{Landwehr {\em et al.}}{2012}]{landwehr2012privacy}
-%	Carl Landwehr, Dan Boneh, John~C Mitchell, Steven~M Bellovin, Susan Landau, and
-%	Michael~E Lesk.
-%	\newblock Privacy and cybersecurity: The next 100 years.
-%	\newblock {\em Proceedings of the IEEE}, 100(Special Centennial
-%	Issue):1659--1673, 2012.
-%	
-%	
-%	
-%		\bibitem[\protect\citeauthoryear{}{}]{dagdee2011extending}
-%	Nirmal Dagdee and Ruchi Vijaywargiya.
-%	\newblock Extending xacml to support credential based hybrid access control.
-%	\newblock {\em IJCSI}, 2011.
-%	
-%
-%	\bibitem[\protect\citeauthoryear{}{2013}]{rissanen2013extensible}
-%	Erik Rissanen.
-%	\newblock extensible access control markup language (xacml) version 3.0 oasis
-%	standard, 2013.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2008}]{ragouzis2008security}
-%	Nick Ragouzis, John Hughes, Rob Philpott, Eve Maler, Paul Madsen, and Tom
-%	Scavo.
-%	\newblock Security assertion markup language (saml) v2. 0 technical overview,
-%	2008.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2010}]{kounga2010extending}
-%	Gina Kounga, Marco~Casassa Mont, and Pete Bramhall.
-%	\newblock Extending xacml access control architecture for allowing
-%	preference-based authorisation.
-%	\newblock In {\em Trust, Privacy and Security in Digital Business}, pages
-%	153--164. Springer, 2010.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2009}]{camenisch2009credential}
-%	Jan Camenisch, S~Modersheim, Gregory Neven, S~Preiss, and Dieter Sommer.
-%	\newblock Credential-based access control extensions to xacml.
-%	\newblock In {\em W3C Workshop on Access Control Application Scenarios,
-%		Luxembourg}, volume~17, 2009.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2015}]{ma2015cloud}
-%	Weina Ma and Kamran Sartipi.
-%	\newblock Cloud-based identity and access control for diagnostic imaging
-%	systems.
-%	\newblock In {\em Proceedings of the International Conference on Security and
-%		Management (SAM)}, page 320. The Steering Committee of The World Congress in
-%	Computer Science, Computer Engineering and Applied Computing (WorldComp),
-%	2015.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2014}]{huABAC2014guide}
-%	Vincent~C Hu, David Ferraiolo, Rick Kuhn, Adam Schnitzer, Kenneth Sandlin,
-%	Robert Miller, and Karen Scarfone.
-%	\newblock Guide to attribute based access control (abac) definition and
-%	considerations.
-%	\newblock {\em NIST Special Publication}, 800:162, 2014.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2009}]{pernulAccesseGov}
-%	G\"{u}nther Pernul.
-%	\newblock Access-egov: Access to e-government services employing semantic
-%	technologies, 2009.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2002}]{camenisch2002design}
-%	Jan Camenisch and Els Van~Herreweghen.
-%	\newblock Design and implementation of the idemix anonymous credential system.
-%	\newblock In {\em Proceedings of the 9th ACM conference on Computer and
-%		communications security}, pages 21--30. ACM, 2002.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2001}]{camenisch2001efficient}
-%	Jan Camenisch and Anna Lysyanskaya.
-%	\newblock An efficient system for non-transferable anonymous credentials with
-%	optional anonymity revocation.
-%	\newblock In {\em Advances in Cryptology\-EUROCRYPT 2001}, pages 93--118.
-%	Springer, 2001.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2000}]{brands2000rethinking}
-%	Stefan~A Brands.
-%	\newblock {\em Rethinking public key infrastructures and digital certificates:
-%		building in privacy}.
-%	\newblock MIT Press, 2000.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2014}]{nogueira2014aprimoramento}
-%	Hendri Nogueira.
-%	\newblock Aprimoramento da privacidade em infraestruturas de chaves
-%	p\'{u}blicas centradas no usuário e baseadas em not\'{a}rios, 2014.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2011}]{gollmann2011compsecurity}
-%	Dieter Gollmann.
-%	\newblock {\em Computer Security}.
-%	\newblock John Wiley \& Sons, 3 edition, Feb. 2011.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2008}]{anderson2008security}
-%	Ross Anderson.
-%	\newblock {\em Security engineering}.
-%	\newblock John Wiley \& Sons, 2008.
-%	
-%	\bibitem[\protect\citeauthoryear{}{1974}]{lampson1974protection}
-%	Butler~W Lampson.
-%	\newblock Protection.
-%	\newblock {\em ACM SIGOPS Operating Systems Review}, 8(1):18--24, 1974.
-%	
-%	\bibitem[\protect\citeauthoryear{}{1994}]{sandhu1994access}
-%	Ravi~S Sandhu and Pierangela Samarati.
-%	\newblock Access control: principle and practice.
-%	\newblock {\em Communications Magazine, IEEE}, 32(9):40--48, 1994.
-%	
-%	\bibitem[\protect\citeauthoryear{}{1992}]{ferraiolo1992role}
-%	David~F. Ferraiolo and D.~Richard Kuhn.
-%	\newblock Role-based access controls.
-%	\newblock In {\em Proceedings of 15th NIST-NCSC National Computer Security
-%		Conference}, volume 563. Baltimore, Maryland: NIST-NCSC, 1992.
-%	
-%	\bibitem[\protect\citeauthoryear{}{1996}]{sandhu1996role}
-%	Ravi~S Sandhu, Edward~J Coyne, Hal~L Feinstein, and Charles~E Youman.
-%	\newblock Role-based access control models.
-%	\newblock {\em Computer}, (2):38--47, 1996.
-%	
-%	\bibitem[\protect\citeauthoryear{}{1996}]{itut1996acframework}
-%	ITU-T Recommendation X.812 (1995)|ISO/IEC 10181-3:1996, Information Technology
-%	- Open Systems Interconnection - Security Frameworks in Open Systems: Access
-%	Control Framework, 1996.
-%	
-%	\bibitem{yuan2005attributed}
-%	Eric Yuan and Jin Tong.
-%	\newblock Attributed based access control (ABAC) for web services.
-%	\newblock In {\em Web Services, 2005. ICWS 2005. Proceedings. 2005 IEEE
-%		International Conference on}. IEEE, 2005.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2010}]{karp2010abac}
-%	Alan~H Karp, Harry Haury, and Michael~H Davis.
-%	\newblock From ABAC to ZBAC: the evolution of access control models.
-%	\newblock In {\em Proceedings of the 5th International Conference on
-%		Information Warfare and Security, ed. EL Armistead}, pages 202--211, 2010.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2015}]{Rubio-Medrano2015federated}
-%	Carlos~E. Rubio-Medrano, Ziming Zhao, Adam Doupe, and Gail-Joon Ahn.
-%	\newblock Federated access management for collaborative network environments:
-%	Framework and case study.
-%	\newblock In {\em Proceedings of the 20th ACM Symposium on Access Control
-%		Models and Technologies}, SACMAT '15, pages 125--134, New York, NY, USA,
-%	2015. ACM.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2010}]{pfitzmann2010terminology}
-%	Andreas Pfitzmann and Marit Hansen.
-%	\newblock A terminology for talking about privacy by data minimization:
-%	Anonymity, unlinkability, undetectability, unobservability, pseudonymity, and
-%	identity management, 2010.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2007}]{el2007survey}
-%	Tewfiq El~Maliki and Jean-Marc Seigneur.
-%	\newblock A survey of user-centric identity management technologies.
-%	\newblock In {\em Emerging Security Information, Systems, and Technologies,
-%		2007. SecureWare 2007. The International Conference on}, pages 12--17. IEEE,
-%	2007.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2010}]{cao2010survey}
-%	Yuan Cao and Lin Yang.
-%	\newblock A survey of Identity Management technology.
-%	\newblock In {\em Information Theory and Information Security (ICITIS), 2010
-%		IEEE International Conference on}, pages 287--293. IEEE, 2010.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2011}]{bertino2011identity}
-%	Elisa Bertino and Kenji Takahashi.
-%	\newblock {\em Identity Management: Concepts, Technologies, and Systems}.
-%	\newblock Artech House, 2011.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2014}]{perez2014identity}
-%	Alejandro Perez-Mendez, Fernando Pereniguez-Garcia, Rafael Marin-Lopez, Gabriel
-%	Lopez-Millan, and Josh Howlett.
-%	\newblock Identity federations beyond the web: A survey.
-%	\newblock {\em Communications Surveys \& Tutorials, IEEE}, 16(4):2125--2141,
-%	2014.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2013}]{torres2013survey}
-%	Juana Torres, Michele Nogueira, and Guy Pujolle.
-%	\newblock A survey on identity management for the future network.
-%	\newblock {\em Communications Surveys \& Tutorials, IEEE}, 15(2):787--802,
-%	2013.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2002}]{erdos2002shibboleth}
-%	Marlena Erdos and Scott Cantor.
-%	\newblock Shibboleth architecture draft v05.
-%	\newblock {\em Internet2/MACE, May}, 2:33, 2002.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2015}]{openid2015}
-%	OpenID.
-%	\newblock The OpenID project, 2005.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2012}]{hardt2012oauth}
-%	Dick Hardt.
-%	\newblock The oauth 2.0 authorization framework (rfc 6749).
-%	\newblock 2012.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2014}]{sakimura2014openidconnect}
-%	N.~Sakimura, J.~Bradley, M.~Jones, B.~de~Medeiros, and C.~Mortimore.
-%	\newblock OpenID Connect core 1.0 incorporating errata set 1, 2014.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2009}]{goodner2009ws}
-%	M~Goodner and A~Nadalin.
-%	\newblock Web Services federation language (WS-Federation) version 1.2, 2009.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2011}]{deng2011privacy}
-%	Mina Deng, Kim Wuyts, Riccardo Scandariato, Bart Preneel, and Wouter Joosen.
-%	\newblock A privacy threat analysis framework: supporting the elicitation and
-%	fulfillment of privacy requirements.
-%	\newblock {\em Requirements Engineering}, 16(1):3--32, 2011.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2005}]{byun2005purpose}
-%	Ji-Won Byun, Elisa Bertino, and Ninghui Li.
-%	\newblock Purpose based access control of complex data for privacy protection.
-%	\newblock In {\em Proceedings of the tenth ACM symposium on Access control
-%		models and technologies}, pages 102--110. ACM, 2005.
-%	
-%	\bibitem[\protect\citeauthoryear{}{2014}]{mourad2014towards}
-%	Alain Mourad and Hussein Jebbaoui.
-%	\newblock Towards efficient evaluation of XACML policies.
-%	\newblock In {\em Privacy, Security and Trust (PST), 2014 Twelfth Annual
-%		International Conference on}, pages 164--171. IEEE, 2014.
-%	
-%\end{thebibliography}
-
-
-%  \bibitem[Heritage, 1992]{Heritage:92}
-%     (1992) {\it The American Heritage.
-%     Dictionary of the American Language.}
-%     Houghton Mifflin Company.
-%  \bibitem[Able, 1956]{Abl:56}
-%     B.~C.~Able (1956). Nucleic acid content of macroscope.
-%     {\it Nature 2}, 7--9.
-%  \bibitem[Able {\em et al.}, 1954]{AbTaRu:54}
-%     B.~C. Able, R.~A. Tagg, and M.~Rush (1954).
-%     Enzyme-catalyzed cellular transanimations.
-%     In A.~F.~Round, editor,
-%     {\it Advances in Enzymology Vol. 2} (125--247).
-%     New York, Academic Press.
-%  \bibitem[R.~Keohane, 1958]{Keo:58}
-%     R.~Keohane (1958).
-%     {\it Power and Interdependence:
-%     World Politics in Transition.}
-%     Boston, Little, Brown \& Co.
-%  \bibitem[Powers, 1985]{Pow:85}
-%     T.~Powers (1985).
-%     Is there a way out?
-%     {\it Harpers, June 1985}, 35--47.
-
-%\end{thebibliography}
 
 \end{document}
