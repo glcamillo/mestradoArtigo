@@ -292,20 +292,6 @@ Basicamente, o fluxo de mensagens seguem os seguintes passos:
 				
 Sobre o fluxo, há algumas considerações. As mensagens iniciam com o usuário fazendo uma requisição de acesso a uma aplicação no lado do RP. As mensagens (1), (3), (4) e (5), no fluxo padrão, são redirecionadas através do usuário, geralmente via navegador \textit{Web}.
 
-\noindent For systems (\ref{sys1})--(\ref{sys3}),
-suggested the following method to form a system~with
-parameter-incremental uncertainties to make use of the property of
-parameters. Since the parameter $\theta _j (k)$ can be measured at
-sample time and the bound rates of parameters variations are also
-available, the range of $\theta_j(k + i|k)$ can be computed and
-described as:
-\noindent And then the following is defined in
-
-For the parameters of systems (\ref{sys1})--(\ref{constraint}), the
-measured values of parameters can be utilised at each time. With
-consideration of measurement errors (\ref{error}), the following can
-be obtained.
-
 \section{Privacidade}
 
 A privacidade é um conceito amplamente divulgado mas que não possui uma definição única. Para este trabalho será adotado os autores \cite{pfitzmann2010terminology} propõem ampla conceituação envolvendo esse tema. Primeiramente, privacidade é o direito de indivíduos, grupos ou instituições de determinar quando, como e qual informação sobre os mesmos é comunicada aos outros. Ainda, traz o importante conceito de minimização de dados, o qual resumidamente é diminuir a possibilidade, a quantidade e o tempo sob guarda de dados pessoais por terceiros. Dos objetivos relacionados à privacidade e minimização de dados, conforme encontrados em \cite{pfitzmann2010terminology} e \cite{deng2011privacy}, três serão apresentados a seguir, por serem importantes no presente trabalho:
@@ -328,7 +314,22 @@ national level. However, in contrast to the Convention for the Protection of Ind
 
 \section{Example Scenario}
 
-In this section we will illustrate the problem and the proposed solution through a sample scenario.
+In this section we will illustrate the problem and the proposed solution through a sample scenario. The example refers to a public library (PubLib) that permits borrowing materials like books and digital media to a citizens that have been registered in an public organization (PubOrgIdP) that supports an identity provider. The library don't want maintain system and/or database of the users profile.
+
+The library wants use authorization based on attributes and externalized of the application. The service should run on RESTful architecture, that permits the use of service by desktop/mobile platforms. The solution that permits comply with the requirements is the XACML 3.0, because is modular, have included the REST/JSON profiles and the policy of use of service can be enforce by specifying the rules in the language. The organization that offers service of identity provider wants an application that permits users to register, control and releases via consent their personal data over a RESTful architecture. Was chosen the OpenID Connect that is a recent specification and has several open source implementations.
+
+The service of borrow materials has subject to follow policies:
+\begin{enumerate}
+	\item [P1] Any material (physical or digital) only can be borrow to citizen that authenticates to PubOrgIdP;
+	\item [P2] The library accepts user authentication with identification or by pseudonym;
+	\item [P3] The library borrows up until tree materials;
+	\item [P4] User can only borrow material if any material on his possession has less fifteen days;
+	\item [P5] If a user lives in ;	
+\end{enumerate}
+
+
+
+\subsection[sec:problemstatement]{Problem Statement and Solution}
 
 Scenario The Scenario dimension defines the primary untrusted actor and potential attacker in a privacy-sensitive information exchange operation.
 
@@ -336,12 +337,6 @@ The Untrusted Server scenario describes the case of a service provider that aims
 consumers than necessary. This usually relates to the identity of the service consumers, leading to techniques such as
 anonymous communication which can be realized by relying on intermediate proxies between a sender and a receiver
 responsible for masking the sender's identity (cf. (Chaum,1981)). The main issue with anonymous communication is
-
-
-
-
-\subsection[sec:problemstatement]{Problem Statement and Solution}
-
 
 
 
