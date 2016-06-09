@@ -111,17 +111,9 @@ Em vista dos problemas das propostas anteriores e também pelo fato do XACML nã
 
 Outro trabalho \cite{kounga2010extending} também seguiu a linha de estender o XACML, mas definindo uma autoridade que armazenasse os atributos e políticas. A proposta de Kounga em \cite{kounga2010extending} aborda a possibilidade de que o consentimento do usuário pode se estender tanto nas preferências de privacidade das informações pessoais quanto em dados. Além disso, através da extensão do XACML o consentimento pode ser de granularidade mais fina sobre os dados. Para evitar que os pontos PDP e PEP do XACML não tenham acesso às preferências de privacidade e de dados do usuário a arquitetura foi estendida para incluir módulos que tratam exclusivamente dos dados de atributos, que foi definido como \textit{Attribute Authority} (AA). Apesar de apresentar a característica de autorização com privacidade, a solução necessita que uma autoridade de confiança (chamada de \textit{data collector}) gerencie as preferências e os dados pessoais. Além disso, o artigo não apresentou uma implementação da proposta, em parte, devido ao fato da solução usar alguns conceitos e estender o \textit{framework} do projeto \textit{Identity Governance Framework} (IGF). A extensão do XACML para acomodar controle de acesso baseado em certificados de atributos foi explorada pelos trabalhos de \citep{camenisch2009credential} e \citep{dagdee2011extending}, o primeiro na forma de uma linguagem e outro na extensão da arquitetura.
 
-Chadwick propôs uma arquitetura em \cite{chadwick2012privacy} que fornece serviço de autorização para ambiente em nuvem. A questão de privacidade é tratada sob dois aspectos: primeiro, através de diferentes PDPs que avaliam cada qual uma linguagem de política de privacidade diferente; e o conceito de \textit{sticky policy}, que permite que os dados trafeguem entre instalações de nuvens mas mantendo presa a política de privacidade. O pressuposto adotado no trabalho foi que os provedores de serviço na nuvem são confiáveis de tal forma que vão honrar as políticas de privacidade definidas nas sticky policies oriundas de outros provedores no mesmo ambiente de nuvem. Trata-se de proposta dentro do projeto PERMIS nos quais foram definidas que levou os autores a não incluírem questões de autenticação.
+Chadwick propôs uma arquitetura em \cite{chadwick2012privacy} que fornece serviço de autorização para ambiente em nuvem. A questão de privacidade é tratada sob dois aspectos: primeiro, através de diferentes PDPs que avaliam cada qual uma linguagem de política de privacidade diferente; e o conceito de \textit{sticky policy}, que permite que os dados trafeguem entre instalações de nuvens mas mantendo presa a política de privacidade. O pressuposto adotado no trabalho foi que os provedores de serviço na nuvem são confiáveis de tal forma que vão honrar as políticas de privacidade definidas nas sticky policies oriundas de outros provedores no mesmo ambiente de nuvem. Trata-se de proposta dentro do projeto PERMIS \cite{chadwick2008permis} that is framework to provide policy based authorisation for federated and/or grid applications using the standard SOAP/SAML protocol. The goal of the project is create a system with privacy preserving authorization and tools for management of policies. The architecture was defined and constructed over the SAML protocol and the entity that provide de user data was not specified by \cite{chadwick2012privacy} but PERMIS can be integrated with Shibboleth and Globus toolkit, while our proposal uses RESTful and OpenID Connect. Although the user has control of his privacy PII, the model depends on the service provider respect the policy.
 
-
-The ISSRG are the authors of PERMIS, a fully functional open source authorisation (or privilege management) infrastructure written in Java. The source code is available here. PERMIS is fully integrated with Shibboleth and Globus toolkit to provide policy based authorisation for federated and/or Grid applications using the industry standard SOAP/SAML protocol. 
-
-http://sec.cs.kent.ac.uk/permis/
-
-
-Architectures for policy decomposition \cite{lin2008policy} and policy federation \cite{decat2012toward,decat2013federated,decat2014middleware} aimed to provide confidentiality and privacy when enforcing access control policies in distributed environment. The proposed works are supported by the XACML policy and architecture, because the entities are specified to be easy distributed.
-
-
+Architectures for policy decomposition \cite{lin2008policy} and policy federation \cite{decat2012toward,decat2013federated,decat2014middleware} aimed to provide confidentiality and privacy when enforcing access control policies in distributed environment. The proposed works are supported by the XACML policy and architecture, because the entities are specified to be easy distributed. The proposed works are supported by SOAP/SAML protocols and the relationship with identity providers were not defined in their proposals. 
 
 The Privacy-ABC technologies are proven solutions to create solutions for privacy preserving PII. There are based in cryptography a important 
 Sistemas de gerenciamento de identidade baseados em credenciais foram propostos, valendo destacar o IDEMIX\cite{camenisch2002design}, sistema da IBM, baseado no esquema de Camenisch-LysyansKaya \cite{camenisch2001efficient} e o U-Prove, especificação criada por \cite{brands2000rethinking}, atualmente pertencente à \textit{Microsoft}. O primeiro foi criado a partir de primitivas criptográficas e é baseado em credenciais anônimas para permitir transferência de atributos de forma a manter privacidade. Os dois sistemas acabaram virando sistemas empresariais e a complexidade dos mesmos é alta \cite{nogueira2014aprimoramento}.
@@ -131,15 +123,10 @@ O trabalho de \cite{ma2015cloud} apresentou um modelo em que os usuários eram i
 O trabalho que mais se aproxima da proposta do presente projeto é o que Ma apresentou em \cite{ma2015cloud}, pelos seguintes motivos: usa padrões atuais, o \textit{OpenID Connect} para solução de federação de identidade e XACML para controle de acesso de granularidade fina. Tendo em vista que a proposta foi desenhada para controlar o acesso de pacientes, médicos e pesquisados a dados de diagnósticos por imagens, foi incluída a necessidade de diretivas de consentimento para regular com melhor granularidade as condições para acesso aos dados de imagem. O mérito da proposta é a inclusão de um servidor de políticas XACML ligado ao servidor de identidade \textit{OpenID Connect}. Essa solução permitiu descrever os escopos e atributos mais complexos em termos de linguagem de controle de acesso do XACML.
 
 
-\subsection{Sistemas de gerenciamento de identidade}
-
-Sistemas de gerenciamento de identidade foram definidos com base nos protocolos vistos anteriormente em sec:gerenciamento-identidades os quais serão brevemente apresentados a seguir. 
-
 O \textit{Shibboleth} é uma infraestrutura para criação de federações de identidade e tendo sido implementado sobre o protocolo SAML. O uso mais difundido tem se dado dentro da comunidade acadêmica, possuindo instalações em diversos continentes. O SAML que serve de base para a federação \textit{Shibboleth} permite o transporte de informações de atributos do usuários do provedor de identidade para o recurso. Os provedores de serviço são definidos pelo \textit{Shibboleth}, de forma que não permitem políticas de controle de acesso mais avançadas, além do fato de não estarem baseadas em padrões estabelecidos.
 
 Outra solução que implementa federação de identidade é o \textit{OpenID Connect}, que é uma especificação de uma camada de identidade sobre o protocolo de autorização OAuth versão 2.0. Possui suporte à liberação de atributos para provedores de serviço por parte do usuário através de consentimento. O transporte de \textit{tokens} de autorização no formato JSON ocorre sobre mensagens REST. A vantagem é a possibilidade de criar clientes mais leves para dispositivos móveis.
 
-PERMIS \cite{chadwick2008permis} é um \textit{framework} de autorização baseado no modelo de controle de acesso RBAC cuja linguagem é privativa ao projeto. O objetivo do sistema é prover mecanismos de controle de acesso com privacidade, ferramentas para gerenciar políticas e atribuições e delegações de usuários e papeis.
 
 
 
@@ -188,16 +175,12 @@ Detalhamento dos aspectos analisados nas propostas:
 \end{enumerate}
 
 
-\subsection{Grids}
+\section{Background and Context}
+This section discusses the main topics that are related to the context of this work. Specifically, access control, identity management and privacy.
 
-\section{Background}
-A pesquisa referente a este projeto envolve o relacionamento entre diversos temas. Portanto, nas próximas seções serão abordadas alguns conceitos básicos importantes para compreensão dos trabalhos relacionados e da proposta. Além disso, serão apresentados os principais trabalhos relacionados na área, envolvendo os temas desta pesquisa. 
+The access control is the center of security of any information asset resides A segurança em sistemas computacionais têm por objetivo proteger recursos que possuem algum valor para o detentor dos mesmos. Os ativos de informação possuem basicamente três propriedades de segurança \cite{gollmann2011compsecurity}: confidencialidade, integridade e disponibilidade. Outras características também podem ser priorizadas, como autenticidade, contabilidade (em inglês, \textit{accountability}) e não-repúdio. 
 
-Serão apresentados conceitos de controle de acesso, detalhando o modelo Attribute Based Access Control (ABAC)\cite{huABAC2014guide} e a especificação eXtensible Access Control Markup Language (XACML)\cite{rissanen2013extensible}, a seguir o conceito de gerenciamento de identidade, especificamente o OpenID Connect e o conceito de privacidade.
-
-
-\subsection{Access control}
-A segurança em sistemas computacionais têm por objetivo proteger recursos que possuem algum valor para o detentor dos mesmos. Os ativos de informação possuem basicamente três propriedades de segurança \cite{gollmann2011compsecurity}: confidencialidade, integridade e disponibilidade. Outras características também podem ser priorizadas, como autenticidade, contabilidade (em inglês, \textit{accountability}) e não-repúdio. A privacidade pode ser obtida quando se aplica a propriedade da confidencialidade especificamente sobre dados pessoais. Como será detalhado mais adiante, os dados pessoais podem conter classificações mais precisas, como aquela definida em \cite{heurix2015taxonomy}.
+A privacidade pode ser obtida quando se aplica a propriedade da confidencialidade especificamente sobre dados pessoais. Como será detalhado mais adiante, os dados pessoais podem conter classificações mais precisas, como aquela definida em \cite{heurix2015taxonomy}.
 
 Mais especificamente, adotando a definição de  \cite{gollmann2011compsecurity}, segurança em computação é aquela que trata da prevenção e detecção de ações não autorizadas por usuários de um sistema computacional. A definição subsidia a importância dos mecanismos de controle de acesso. O controle de acesso é o centro de gravidade de um sistema computacional e é onde a engenharia de segurança encontra a ciência da computação sendo empregada em todos os níveis computacionais, desde o \textit{hardware} até o nível de aplicativo \cite{anderson2008security}.
 
@@ -219,6 +202,10 @@ A evolução da computação trouxe questões que modelos tradicionais de contro
 	\item Policy Enforcement Point (PEP): é a entidade que efetivamente realiza o controle de acesso, protegendo o recurso. Recebe as requisições de acesso e as envia para o PDP para avaliação cujas respostas de autorização definem o cumprimento da política.
 	\item Policy Information Point (PIP): serve como repositório e origem para os atributos necessários à avaliação da política.
 \end{enumerate}
+
+
+Serão apresentados conceitos de controle de acesso, detalhando o modelo Attribute Based Access Control (ABAC)\cite{huABAC2014guide} e a especificação eXtensible Access Control Markup Language (XACML)\cite{rissanen2013extensible}, a seguir o conceito de gerenciamento de identidade, especificamente o OpenID Connect e o conceito de privacidade.
+
 
 O ABAC possui vantagens bem definidas quando se trata de usar e aplicar um sistema de controle de acesso em ambientes computacionais atuais: 
 
@@ -339,9 +326,29 @@ personal data (hereafter ‘1980 Guidelines’) is one of the earliest initiativ
 national level. However, in contrast to the Convention for the Protection of Individuals with Regard to the Automatic Processing of Personal Data (‘Convention 108’), 3 adopted by the Council of Europe in 1981, the Guidelines are not legally binding. The Guidelines aimed to address two different concerns, namely the risk for the privacy of individuals arising from the increased use of personal data and the risks for the free flow of information across borders due to disparate national data protection legislation. Since the 1980s the volume of personal data has increased exponentially. New technologies facilitate the storage, processing and sharing of personal data, and this at global level, and enable organizations to monitor the geolocation, activities and behaviour of individuals, thus elevating concerns regarding the implications for individuals’ privacy. In light of these technological developments and challenges, several existing data protection frameworks are being refined, including the EU’s Data Protection Directive, and more and more countries adopt data protection legislation. Today, there are more than 90 countries in six continents with data protection laws and the number is going to increase with countries like Brazil, China and India working on new laws. All these changes have led to the revision of the 1980 Guidelines.
 
 
+\section{Example Scenario}
 
-\section{Proposed}
+In this section we will illustrate the problem and the proposed solution through a sample scenario.
+
+Scenario The Scenario dimension defines the primary untrusted actor and potential attacker in a privacy-sensitive information exchange operation.
+
+The Untrusted Server scenario describes the case of a service provider that aims to gain more information about the service
+consumers than necessary. This usually relates to the identity of the service consumers, leading to techniques such as
+anonymous communication which can be realized by relying on intermediate proxies between a sender and a receiver
+responsible for masking the sender's identity (cf. (Chaum,1981)). The main issue with anonymous communication is
+
+
+
+
+\subsection[sec:problemstatement]{Problem Statement and Solution}
+
+
+
+
+\section{Proposed Model}
 A proposta a ser desenvolvida no decorrer do período da pesquisa será apresentada a seguir considerando os principais aspectos que deverão ser modelados nas especificações e sistemas em uso. Antes da exposição, serão apresentadas as restrições que escopos que nortearão a construção da proposta, alguns dos quais já informados nos objetivos.
+
+
 
 \section{Proposed scope}
 
@@ -369,18 +376,7 @@ the same class (e.g., person and corresponding medical data).
 The Aspect (Fig. 3) dimension covers the general target of the
 PET (cf. (Fischer-Hübner, 2001)) and distinguishes between
 
-Scenario The Scenario dimension defines the primary
-untrusted actor and potential attacker in a privacy-
-sensitive information exchange operation.
 
-The Untrusted Server scenario describes the case of a service
-provider that aims to gain more information about the service
-consumers than necessary. This usually relates to the identity
-of the service consumers, leading to techniques such as
-anonymous communication which can be realized by relying
-on intermediate proxies between a sender and a receiver
-responsible for masking the sender's identity (cf. (Chaum,
-1981)). The main issue with anonymous communication is
 
 
 \section{Definição da proposta}
