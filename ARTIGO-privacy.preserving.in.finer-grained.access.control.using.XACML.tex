@@ -117,13 +117,13 @@ Chadwick propôs uma arquitetura em \cite{chadwick2012privacy} que fornece servi
 Architectures for policy decomposition \cite{lin2008policy} and policy federation \cite{decat2012toward,decat2013federated,decat2014middleware} aimed to provide confidentiality and privacy when enforcing access control policies in distributed environment. The proposed works are supported by the XACML policy and architecture, because the entities are specified to be easy distributed. The proposed works are supported by SOAP/SAML protocols and the relationship with identity providers were not defined in their proposals. 
 
 The Privacy-ABC technologies are proven solutions to create solutions for privacy preserving PII. There are based in cryptography a important 
-Sistemas de gerenciamento de identidade baseados em credenciais foram propostos, valendo destacar o IDEMIX\cite{camenisch2002design}, sistema da IBM, baseado no esquema de Camenisch-LysyansKaya \cite{camenisch2001efficient} e o U-Prove, especificação criada por \cite{brands2000rethinking}, atualmente pertencente à \textit{Microsoft}. O primeiro foi criado a partir de primitivas criptográficas e é baseado em credenciais anônimas para permitir transferência de atributos de forma a manter privacidade. Os dois sistemas acabaram virando sistemas empresariais e a complexidade dos mesmos é alta \cite{nogueira2014aprimoramento}.
+Sistemas de gerenciamento de identidade baseados em credenciais foram propostos, valendo destacar o IDEMIX\cite{camenisch2002design}, sistema da IBM, baseado no esquema de Camenisch-LysyansKaya \cite{camenisch2001efficient} e o U-Prove, especificação criada por \cite{brands2000rethinking}, atualmente pertencente à \textit{Microsoft}. O primeiro foi criado a partir de primitivas criptográficas e é baseado em credenciais anônimas para permitir transferência de atributos de forma a manter privacidade. Os dois sistemas acabaram virando sistemas empresariais e a complexidade dos mesmos é alta \cite{nogueira2014aprimoramento}. The Privacy-ABC resolves the problem previously presented but requires entities that create the infrastructure of public key, making the solution costly.
 
-On the side of identity management there is the well known Shibboleth \cite{erdos2002shibboleth} that is a open source software package for web single sign-on and installations of identity federation. It's based on OASIS Security Assertion Markup Language (SAML) and in Shibboleth version 2.0 the OpenSAML is the stack that provides the XML support. For the purposes of this work the Shibboleth don't or partially meets the requisites, because of this considerations: Shibboleth uses SAML and it is a SOAP/XML based protocol; the SAML infrastructure for federation needs explicit trust configuration; and the service providers based on SAML and Shibboleth are tightly coupled to the identity providers. Those characteristics difficult the adoption for a Web more light, based on RESTful and desktop/mobile based.
+On the side of identity management there is the well known Shibboleth \cite{erdos2002shibboleth} that is a open source software package for web single sign-on and installations of identity federation. It's based on OASIS Security Assertion Markup Language (SAML) and in Shibboleth version 2.0 the OpenSAML is the stack that provides the XML support. For the purposes of this work the Shibboleth don't or partially meets the requisites, because of this considerations: Shibboleth uses SAML and it is a SOAP/XML based protocol; the SAML infrastructure for federation needs explicit trust configuration; and the service providers based on SAML and Shibboleth are tightly coupled to the identity providers. Those characteristics difficult the adoption for a Web more light, based on RESTful Web API and desktop/mobile based.
 
-User-Managed Access (UMA)\cite{hardjono-oauth-umacore-14,machulak2010user} protocol is a profile of OAuth 2.0 in that the user manages the policy of access control to his protected resources (personal data, content or services). This is achieved by the user defining the policies in a central authorization server and the resource servers complying with predefined agreement on a set of obligations \citep{maler-oauth-umatrust-03}. Th
+User-Managed Access (UMA)\cite{hardjono-oauth-umacore-14,machulak2010user} protocol is a profile of OAuth 2.0 in that the user manages the policy of access control to his protected resources (personal data, content or services). This is achieved by the user defining the policies in a central authorization server (AS) and the requesting parties (RP) adhering to a set of obligations \citep{maler-oauth-umatrust-03}. Resuming, UMA is a protocol for authorization in Web 2.0 that leverages to the user of control about his data, that is, the UMA is user-centric while our proposal is centred in service but offering privacy about PII. Another difference is that the UMA needs agreement between authorization server and requesting party that possibilities the AS trust that the RP enforces the user defined policies while ours concept is that the RP is untrusty.
 
-
+Werner 
 
 O trabalho de \cite{ma2015cloud} apresentou um modelo em que os usuários eram identificados por uma federação \textit{OpenID Connect} e o controle de acesso através do XACML. Para incluir o consentimento dos usuários sobre a liberação de seus dados, foi criado um servidor de políticas XACML ligado ao servidor de identidade. Apesar de usar padrões atuais, a solução de Ma foi adaptada especificamente para resolver a questão do acesso de pacientes, médicos e colaboradores sobre os dados de imagens de diagnóstico médico disponibilizados por diferentes clínicas e hospitais dentro de uma nuvem.
 
@@ -176,6 +176,9 @@ Detalhamento dos aspectos analisados nas propostas:
 	\item Protótipo: se foi ou não criado um protótipo com alguns resultados de validação.
 	\item Implementação vinculada à projeto: alguns artigos apresentaram propostas dentro de projetos aos quais estavam vinculados. Um aspecto negativo desses artigos é que muitas suposições e contextos estão vinculados às definições dos projetos e/ou sistemas, dificultando ao pesquisador obter e testar as propostas
 	\item Complexidade: essa característica está ligada tanto à implantação da proposta quanto à complexidade de execução.
+	
+	RESTful Web API
+	
 \end{enumerate}
 
 
@@ -183,6 +186,8 @@ Detalhamento dos aspectos analisados nas propostas:
 This section discusses the main topics that are related to the context of this work. Specifically, access control, identity management and privacy.
 
 The access control is the centre of security of any information system asset and resides in all levels, from hardware to application \citep{anderson2008security}. The main goal of access control is mediate requests to resources and enforce the decision of grant or deny \citep{samarati2001access}. But, as denoted by \cite{gollmann2011compsecurity}, the process of controlling access is evaluated in two steps: authentication and authorization. The authentication is the mechanisms that verifies with trustworthy the identity of the entity that is requesting access to resources. Authorization is the process of regulating the access control.
+
+
 
 The complexity of systems take the creation of Policy Based Access Control (PBAC) in that the security policy is defined by rules according to which access control must be regulated \citep{samarati2001access}. The definition of a policy language and specifying a system to enforce it permit that the authorization can be externalized of the application. In this work we will use the language eXtensible Access Control Markup Language (XACML)\cite{rissanen2013extensible} that permits express policies for authorization.
 
@@ -283,7 +288,7 @@ The service of borrow materials has subject to follow policies:
 	\item [P2] The library accepts user authentication with identification or by pseudonym;
 	\item [P3] The library borrows up until tree materials;
 	\item [P4] User can only borrow material if any material on his possession has less fifteen days;
-	\item [P5] If a user lives in ;	
+	\item [P5] If a user is older than 60 years and lives in the same region of the library, then the materials can be shipping free of charge;	
 \end{enumerate}
 
 
