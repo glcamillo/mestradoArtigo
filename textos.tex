@@ -41,7 +41,12 @@ consumers than necessary. This usually relates to the identity of the service co
 anonymous communication which can be realized by relying on intermediate proxies between a sender and a receiver
 responsible for masking the sender's identity (cf. (Chaum,1981)). The main issue with anonymous communication is
 
+O XACML não provê facilidades para acomodar certificados de atributos \citep{dagdee2011extending},
 
+The Web 2.0 and cloud allowed users access services and share his and her data between applications, organizations and individuals. To protect users credentials the authentication and authorization were externalized of applications and several protocols and frameworks show up. Examples of authentication protocols for Web are the SAML, WS-Federation, WS-Trust, OpenID and OpenID Connect. For authorization there are two well known protocols, the OAuth 2.0 (Open Authorization) and the UMA.
+
+
+O trabalho que mais se aproxima da proposta do presente projeto é o que Ma apresentou em \cite{ma2015cloud}, pelos seguintes motivos: usa padrões atuais, o \textit{OpenID Connect} para solução de federação de identidade e XACML para controle de acesso de granularidade fina. Tendo em vista que a proposta foi desenhada para controlar o acesso de pacientes, médicos e pesquisados a dados de diagnósticos por imagens, foi incluída a necessidade de diretivas de consentimento para regular com melhor granularidade as condições para acesso aos dados de imagem. 
 
 Bayseana:classificação
 
@@ -54,7 +59,26 @@ paragrafo
 - 6 frase
 - cada frase deve ter uma palavra da anterior:coesão
 
+results
+was: trabalhos já realizados
+had been: proposta e achados
 
 A important aspect related to authorization is the fact that for a correct decision, the entity must have all the relevant attributes required by the policy.
 
 A privacidade pode ser obtida quando se aplica a propriedade da confidencialidade especificamente sobre dados pessoais. Como será detalhado mais adiante, os dados pessoais podem conter classificações mais precisas, como aquela definida em \cite{heurix2015taxonomy}.
+
+
+
+================
+
+%	booktitle={Computer and Information Technology; Ubiquitous Computing and Communications; Dependable, Autonomic and Secure Computing; Pervasive Intelligence and Computing (CIT/IUCC/DASC/PICOM), 2015 IEEE International Conference on},
+pages={168--175},
+
+
+organization={IEEE}
+
+
+================
+O ABAC possui vantagens bem definidas quando se trata de usar e aplicar um sistema de controle de acesso em ambientes computacionais atuais. The concept of fine-grained authorization, that permite modelar políticas de acesso considerando determinados atributos, o que quer dizer que não só importa quem o usuário é, mas sobre o que, quando, onde, porque e como. The possibility to include attributes of the environment (context) of the request, such time and location. This enables the request be made without the identification of the requester and it permits that the use of model to Service-Oriented Architecture (SOA).
+
+The complexity of systems take the creation of Policy Based Access Control (PBAC) in that the security policy is defined by rules according to which access control must be regulated \citep{samarati2001access}. The definition of a policy language and specifying a system to enforce it permit that the authorization can be externalized of the application. In this work we will use the XACML that permits express policies for authorization.
