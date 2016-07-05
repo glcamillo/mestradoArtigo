@@ -127,47 +127,6 @@ Externalization of authorization in Web applications took to the protocols OAuth
 
 O trabalho de \cite{ma2015cloud} apresentou um modelo em que os usuários eram identificados por uma federação \textit{OpenID Connect} e o controle de acesso através do XACML. Para incluir o consentimento dos usuários sobre a liberação de seus dados, foi criado um servidor de políticas XACML ligado ao servidor de identidade. O mérito da proposta é a inclusão de um servidor de políticas XACML ligado ao servidor de identidade \textit{OpenID Connect}. Essa solução permitiu descrever os escopos e atributos mais complexos em termos de linguagem de controle de acesso do XACML. Apesar de usar padrões atuais, a solução de Ma foi adaptada especificamente para resolver a questão do acesso de pacientes, médicos e colaboradores sobre os dados de imagens de diagnóstico médico disponibilizados por diferentes clínicas e hospitais dentro de uma nuvem.
 
-To localize our proposal in the context of related works we presents the table \ref{tab-tabela-comparativa} with the points 
-
-\begin{table}
-	% \begin{table}[h]
-	\tiny
-	\centering
-	\caption{Tabela comparativa entre as principais características referentes aos trabalhos relacionados.}
-	\label{tab-tabela-comparativa}
-	\begin{tabular}{|m{6em}|c|c|c|c|c|c|c|c|c|}
-		\hline  & GerenIdent & \textit{AuthZ}(fina/grossa) & \textit{AuthZ}(modelo) & PadrõesMercado & Protótipo & ImplemVincProjeto & Complexidade & RESTful Web API\\ 
-		\hline \cite{kolter2007privacy}     & Não        & Fina   & XACML           & Não            & Não(Access e-Gov) & Sim(Access e-Gov) & S/I \\ 
-		\hline \cite{ardagna2008privacy}    & Sim(PRIME) & Grossa & Privada         & Parcial        & Sim               & Sim(PRIME)        & Alta(1) \\ 
-		\hline \cite{ardagna2010exploiting} & Sim(PRIME) & Grossa & Privada         & Parcial        & Sim               & Sim(PRIME)        & Alta(1) \\ 
-		\hline \cite{ardagna2010enabling}   & Não        & Fina   & XACML           & Sim(XACML,SAML)  & Não               & Sim(PrimeLife)    & S/I \\ 
-		\hline \cite{kounga2010extending}   & Não        & Fina   & XACML           & Sim            & Não               & Sim(IGF)          & S/I \\ 
-		\hline \cite{chadwick2012privacy}   & Não        & Fina   & XACML           & Parcial        & Sim               & Sim(PERMIS)       & Baixa(2) \\ 
-		\hline \cite{ma2015cloud}           & Não        & Fina   & XACML           & Sim            & Sim               & Sim               & Baixa \\ 
-		\hline \textit{Shibbolet}           & Sim        & Grossa & Privado         & Sim(SAML)      & Sistema em produção & \-     & Baixa/média \\
-		\hline \textit{OpenID Connect}      & Sim        & Grossa & OAuth 2.0       & Sim(OAuth2.0)  & Sistema em produção & \-     & Baixa \\    
-		\hline Proposta                     & Sim        & Fina   & XACML           & Sim            & Sim               & Baixa             & Sim(3) \\
-		\hline 
-	\end{tabular} 
-	\\ Fonte: o autor.
-	\\ Observações: S/I sem informações.
-	\\ (1): complexidade conforme definido em \cite{nogueira2014aprimoramento}.
-	\\ (2): complexidade de execução baixa conforme resultados no artigo \cite{chadwick2012privacy}.
-	\\ (3): expectativa considerando os protocolos e sistemas usados pela proposta.
-	% \end{table}
-\end{table}
-
-Detalhamento dos aspectos analisados nas propostas:
-\begin{enumerate}
-	\item A
-	\item Gerenciamento de Identidade: verifica se a proposta inclui o relacionamento com um sistema de gerenciamento de identidade, ou seja, se há alguma sistema que fornece os atributos para autorização.
-	\item Autorização (\textit{AuthZ}) (fina/grossa): especifica se a autorização é considerada sobre os atributos individuais do sujeito, recurso e ambiente, consistente com o modelo ABAC, o qual determina a autorização de granularidade fina. Caso contrário, diz-se que o sistema implementa autorização de granularidade grossa.
-	\item Autorização (modelo): quando a proposta define um sistema de autorização, verifica se a mesma se baseia em algum modelo ou é proprietário à proposta.
-	\item Padrões de mercado: algumas propostas podem fazer uso ou estender padrões ou especificações de mercado para mecanismos de controle de acesso, autorização e transporte de mensagens. As especificações mais adotadas nesse ramos de estudos são: XACML, SAML, OAuth, OpenID e \textit{OpenID Connect}.
-	\item Protótipo: se foi ou não criado um protótipo com alguns resultados de validação.
-	\item Implementação vinculada à projeto: alguns artigos apresentaram propostas dentro de projetos aos quais estavam vinculados. Um aspecto negativo desses artigos é que muitas suposições e contextos estão vinculados às definições dos projetos e/ou sistemas, dificultando ao pesquisador obter e testar as propostas
-	\item Complexidade: essa característica está ligada tanto à implantação da proposta quanto à complexidade de execução.	
-\end{enumerate}
 
 
 \section{Background and Context}
